@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./cascading.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="calc.js"></script>
+
+</head>
+
+<body>
+    <form name="calc_form" method="post" action="#" style="width: 100%;">
+
+        <table class='fmcalc' cellspacing='0' align="center">
+            <tbody>
+
+                <!-- table title -->
+                <tr>
+                    <td colspan=7 style="background-color: antiquewhite;">
+                        <br>
+                        <h4 align=center>Debt Snowball Calculator</h4>
+                    </td>
+                </tr>
+
+                <!-- label regions -->
+                <tr>
+                    <td align="right"> </td>
+                    <td align="center" colspan="4">
+                        <b>
+                            Entry Columns
+                        </b>
+                    </td>
+                    <td align="center" colspan="2">
+                        <b>
+                            Calculated Columns
+                        </b>
+                    </td>
+                </tr>
+
+                <!-- label 10x columes -->
+                <tr>
+                    <td align="right">
+                        <b>
+                        </b><b>#</b>
+
+                    </td>
+                    <td align="center">
+                        <b>
+                            Creditor
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Balance<br />Owed ($)
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Interest<br />Rate (%)
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Payment<br />Amount ($)
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Interest<br />Cost
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            # of Pmts<br />Left
+                        </b>
+                    </td>
+                </tr>
+
+                <!-- #1 -->
+                <tr>
+                    <td align="right"><b>1</b></td>
+                    <td align="center"><input type="text" id="D1" name="D1" size="8" tabindex="2" />
+                    </td>
+                    <td align="center"><input type="text" id="prin1" name="prin1" size="8" tabindex="3"
+                            onchange="computeLoan(1)" /></td>
+                    <td align="center"><input type="text" id="intRate1" name="intRate1" size="3" tabindex="4"
+                            onchange="computeLoan(1)" /></td>
+                    <td align="center"><input type="text" id="pmt1" name="pmt1" size="8" tabindex="5"
+                            onchange="computeLoan(1)" /></td>
+                    <td align="center"><input type="text" id="intLeft1" name="intLeft1" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft1" name="pmtLeft1" size="5" /></td>
+                </tr>
+
+                <!-- #2 -->
+                <tr>
+                    <td align="right"><b>2</b></td>
+                    <td align="center"><input type="text" id="D2" name="D2" size="8" tabindex="6" />
+                    </td>
+                    <td align="center"><input type="text" id="prin2" name="prin2" size="8" tabindex="7"
+                            onchange="computeLoan(2)" /></td>
+                    <td align="center"><input type="text" id="intRate2" name="intRate2" size="3" tabindex="8"
+                            onchange="computeLoan(2)" /></td>
+                    <td align="center"><input type="text" id="pmt2" name="pmt2" size="8" tabindex="9"
+                            onchange="computeLoan(2)" /></td>
+                    <td align="center"><input type="text" id="intLeft2" name="intLeft2" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft2" name="pmtLeft2" size="5" /></td>
+                </tr>
+
+                <!-- #3 -->
+                <tr>
+                    <td align="right"><b>3</b></td>
+                    <td align="center"><input type="text" id="D3" name="D3" size="8" tabindex="10" />
+                    </td>
+                    <td align="center"><input type="text" id="prin3" name="prin3" size="8" tabindex="11"
+                            onchange="computeLoan(3)" /></td>
+                    <td align="center"><input type="text" id="intRate3" name="intRate3" size="3" tabindex="12"
+                            onchange="computeLoan(3)" /></td>
+                    <td align="center"><input type="text" id="pmt3" name="pmt3" size="8" tabindex="13"
+                            onchange="computeLoan(3)" /></td>
+                    <td align="center"><input type="text" id="intLeft3" name="intLeft3" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft3" name="pmtLeft3" size="5" /></td>
+                </tr>
+
+                <!-- #4 -->
+                <tr>
+                    <td align="right"><b>4</b></td>
+                    <td align="center"><input type="text" id="D4" name="D4" size="8" tabindex="14" />
+                    </td>
+                    <td align="center"><input type="text" id="prin4" name="prin4" size="8" tabindex="15"
+                            onchange="computeLoan(4)" /></td>
+                    <td align="center"><input type="text" id="intRate4" name="intRate4" size="3" tabindex="16"
+                            onchange="computeLoan(4)" /></td>
+                    <td align="center"><input type="text" id="pmt4" name="pmt4" size="8" tabindex="17"
+                            onchange="computeLoan(4)" /></td>
+                    <td align="center"><input type="text" id="intLeft4" name="intLeft4" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft4" name="pmtLeft4" size="5" /></td>
+                </tr>
+
+                <!-- #5 -->
+                <tr>
+                    <td align="right"><b>5</b></td>
+                    <td align="center"><input type="text" id="D5" name="D5" size="8" tabindex="18" />
+                    </td>
+                    <td align="center"><input type="text" id="prin5" name="prin5" size="8" tabindex="19"
+                            onchange="computeLoan(5)" /></td>
+                    <td align="center"><input type="text" id="intRate5" name="intRate5" size="3" tabindex="20"
+                            onchange="computeLoan(5)" /></td>
+                    <td align="center"><input type="text" id="pmt5" name="pmt5" size="8" tabindex="21"
+                            onchange="computeLoan(5)" /></td>
+                    <td align="center"><input type="text" id="intLeft5" name="intLeft5" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft5" name="pmtLeft5" size="5" /></td>
+                </tr>
+
+                <!-- #6 -->
+                <tr>
+                    <td align="right"><b>6</b></td>
+                    <td align="center"><input type="text" id="D6" name="D6" size="8" tabindex="22" />
+                    </td>
+                    <td align="center"><input type="text" id="prin6" name="prin6" size="8" tabindex="23"
+                            onchange="computeLoan(6)" /></td>
+                    <td align="center"><input type="text" id="intRate6" name="intRate6" size="3" tabindex="24"
+                            onchange="computeLoan(6)" /></td>
+                    <td align="center"><input type="text" id="pmt6" name="pmt6" size="8" tabindex="25"
+                            onchange="computeLoan(6)" /></td>
+                    <td align="center"><input type="text" id="intLeft6" name="intLeft6" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft6" name="pmtLeft6" size="5" /></td>
+                </tr>
+
+                <!-- #7 -->
+                <tr>
+                    <td align="right"><b>7</b></td>
+                    <td align="center"><input type="text" id="D7" name="D7" size="8" tabindex="26" />
+                    </td>
+                    <td align="center"><input type="text" id="prin7" name="prin7" size="8" tabindex="27"
+                            onchange="computeLoan(7)" /></td>
+                    <td align="center"><input type="text" id="intRate7" name="intRate7" size="3" tabindex="28"
+                            onchange="computeLoan(7)" /></td>
+                    <td align="center"><input type="text" id="pmt7" name="pmt7" size="8" tabindex="29"
+                            onchange="computeLoan(7)" /></td>
+                    <td align="center"><input type="text" id="intLeft7" name="intLeft7" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft7" name="pmtLeft7" size="5" /></td>
+                </tr>
+
+                <!-- #8 -->
+                <tr>
+                    <td align="right"><b>8</b></td>
+                    <td align="center"><input type="text" id="D8" name="D8" size="8" tabindex="31" />
+                    </td>
+                    <td align="center"><input type="text" id="prin8" name="prin8" size="8" tabindex="32"
+                            onchange="computeLoan(8)" /></td>
+                    <td align="center"><input type="text" id="intRate8" name="intRate8" size="3" tabindex="33"
+                            onchange="computeLoan(8)" /></td>
+                    <td align="center"><input type="text" id="pmt8" name="pmt8" size="8" tabindex="34"
+                            onchange="computeLoan(8)" /></td>
+                    <td align="center"><input type="text" id="intLeft8" name="intLeft8" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft8" name="pmtLeft8" size="5" /></td>
+                </tr>
+
+                <!-- #9 -->
+                <tr>
+                    <td align="right"><b>9</b></td>
+                    <td align="center"><input type="text" id="D9" name="D9" size="8" tabindex="35" />
+                    </td>
+                    <td align="center"><input type="text" id="prin9" name="prin9" size="8" tabindex="36"
+                            onchange="computeLoan(9)" /></td>
+                    <td align="center"><input type="text" id="intRate9" name="intRate9" size="3" tabindex="37"
+                            onchange="computeLoan(9)" /></td>
+                    <td align="center"><input type="text" id="pmt9" name="pmt9" size="8" tabindex="39"
+                            onchange="computeLoan(9)" /></td>
+                    <td align="center"><input type="text" id="intLeft9" name="intLeft9" size="8" /></td>
+                    <td align="center"><input type="text" id="pmtLeft9" name="pmtLeft9" size="5" /></td>
+                </tr>
+
+                <!-- #10 -->
+                <tr>
+                    <td align="right"><b>10</b></td>
+                    <td align="center"><input type="text" id="D10" name="D10" size="8" tabindex="40" />
+                    </td>
+                    <td align="center"><input type="text" id="prin10" name="prin10" size="8" tabindex="41"
+                            onchange="computeLoan(10)" /></td>
+                    <td align="center"><input type="text" id="intRate10" name="intRate10" size="3" tabindex="42"
+                            onchange="computeLoan(10)" /></td>
+                    <td align="center"><input type="text" id="pmt10" name="pmt10" size="8" tabindex="43"
+                            onchange="computeLoan(10)" /></td>
+                    <td align="center"><input type="text" id="intLeft10" name="intLeft10" size="8" />
+                    </td>
+                    <td align="center"><input type="text" id="pmtLeft10" name="pmtLeft10" size="5" />
+                    </td>
+                </tr>
+
+                <!-- add/month -->
+                <tr>
+                    <td colspan="4">
+                        Monthly amount you can add to your debt payoff plan:
+                    </td>
+                    <td align="center" colspan="1">
+                        <input type="text" name="accel_pmt" tabindex="44" size="8" onKeyUp="clearResults(this.form)" />
+                    </td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <!-- button: calc, clear, email -->
+                <tr class="btnrow">
+                    <td align="center" colspan="7">
+                        <input class="button" type="button" value="Calculate Debt Snowball" onClick="computeForm(this.form)" />
+                        <input class="button" type="reset" value="Clear Form" onClick="clearStuff()" />
+                        <!-- <div>
+                            <button class="button email-my-results-btn launch-popup">
+                                Click Here To <br> Email My Results
+                            </button>
+                        </div> -->
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <b>
+                            Results
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Balance<br />Owed
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Interest<br />Rate
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Payment<br />Amount
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            Interest<br />Cost
+                        </b>
+                    </td>
+                    <td align="center">
+                        <b>
+                            # of Pmts<br />Left
+                        </b>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        Current totals:
+                    </td>
+                    <td align="center"><input type="text" name="totalprin" size="8" /></td>
+                    <td align="center"> N/A </td>
+                    <td align="center"><input type="text" name="totalpmt" size="8" /></td>
+                    <td align="center"><input type="text" name="totalint" size="8" /></td>
+                    <td align="center"><input type="text" name="totalnprs" size="8" /></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        Debt Snowball Totals:
+                    </td>
+                    <td align="center"><input type="text" name="adp_totalprin" size="8" /></td>
+                    <td align="center"> N/A </td>
+                    <td align="center"><input type="text" name="adp_totalpmt" size="8" /></td>
+                    <td align="center"><input type="text" name="adp_totalint" size="8" /></td>
+                    <td align="center"><input type="text" name="adp_totalnprs" size="8" /></td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        Time and interest savings from Accelerated Debt Payoff Plan:
+                    </td>
+                    <td align="center"><input type="text" name="adp_int_save" size="8" /></td>
+                    <td align="center"><input type="text" name="adp_npr_save" size="8" /></td>
+                </tr>
+
+                <tr>
+                    <td colspan=7 align="center">
+                        <div id="summary" align="left">
+                        </div>
+                        <input type="hidden" name="schedule_head" />
+                        <input type="hidden" name="schedule_rows" />
+                        <input type="hidden" name="summary_head" />
+                        <input type="hidden" name="summary_rows" />
+                    </td>
+                </tr>
+
+                <tr class="btnrow">
+                    <td align="center" colspan="7">
+                        <input class="button" type="button" value="Create Payoff Summary" onClick="createSummary(this.form)" />
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="7">
+                        <div id="report"></div>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </form>
+
+</body>
+    <script type="type='text/javascript'" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</html>

@@ -1,0 +1,55 @@
+* {
+    color: gray;
+    overflow: hidden;
+}
+
+html, body{
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    background-color: azure;
+    overflow: visible;
+}
+
+.btnrow {
+    background-color: antiquewhite;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.button {
+    padding: 15px;
+    font-size: medium;
+    background-color: burlywood;
+    border: 0;
+    box-shadow: 2px 3px 3px gray;
+    border-radius: 5px;
+    margin: 10px;
+    color: white;
+}
+
+th,
+td {
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 5px;
+    /* overflow: hidden; */
+}
+
+table {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 60%;
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+tr {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
